@@ -16,6 +16,12 @@ cask "visor" do
 
   app "Visor.app"
 
+  # Until releases are signed with a Developer ID and notarized, clear the
+  # quarantine flag on install and upgrade (Homebrew removed --no-quarantine).
+  postflight do
+    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Visor.app"]
+  end
+
   # `brew upgrade` backs up the old app first and stops if it's gone (moved to
   # the Trash, or removed by security software). An empty stand-in lets the
   # upgrade or uninstall carry on and put the new app in its place.
@@ -33,9 +39,8 @@ cask "visor" do
 
   # Until releases are signed with a Developer ID and notarized.
   caveats <<~EOS
-    Visor is signed ad hoc and not notarized. If macOS says it is damaged or
-    will not open, clear the quarantine flag:
-      xattr -dr com.apple.quarantine "#{appdir}/Visor.app"
+    Visor is signed ad hoc, not notarized. This tap clears the quarantine flag
+    on install and upgrade so macOS opens it.
 
     Disconnect your agents from Visor's menu before uninstalling, so the
     entries it added to Claude Code, Copilot CLI and Antigravity are removed.
