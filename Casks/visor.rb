@@ -18,8 +18,8 @@ cask "visor" do
 
   # Until releases are signed with a Developer ID and notarized, clear the
   # quarantine flag on install and upgrade (Homebrew removed --no-quarantine).
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Visor.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Visor.app"]
   end
 
   # `brew upgrade` backs up the old app first and stops if it's gone (moved to
