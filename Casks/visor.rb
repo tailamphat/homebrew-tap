@@ -1,11 +1,11 @@
 cask "visor" do
-  version "0.3.0"
-  sha256 "34e4d64c9f089299f98e1c710c1d984a5464e629034bf06c54e8ad8613446452"
+  version "0.3.1"
+  sha256 "1a6690a73b2fb66972d06c07aef827934db06771d55359b1669bff130ae2b0ce"
 
   url "https://github.com/tailamphat/visor/releases/download/v#{version}/Visor-#{version}.zip"
   name "Visor"
   desc "Notch app for AI agent usage, approvals, clipboard and music"
-  homepage "https://github.com/tailamphat/visor"
+  homepage "https://tailamphat.github.io/visor/"
 
   livecheck do
     url :url
