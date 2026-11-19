@@ -1,6 +1,6 @@
 cask "visor" do
-  version "0.5.0"
-  sha256 "30d83832853535f87915741551aa56d5439c246464732c3fbdb630b52a0c4a15"
+  version "0.6.1"
+  sha256 "200fb302e44982227a99524490be74d0abf57d22355b70e3db82ce1d58f7cec7"
 
   url "https://github.com/tailamphat/visor/releases/download/v#{version}/Visor-#{version}.zip"
   name "Visor"
